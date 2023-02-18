@@ -51,8 +51,6 @@ def merge_sort(arr):
     merge_sort(right)
     print("\n",arr,"array\n")
     merge_two_sorted_lists(left, right, arr)
-
-
 def merge_two_sorted_lists(a, b, arr):
     len_a = len(a)
     len_b = len(b)
