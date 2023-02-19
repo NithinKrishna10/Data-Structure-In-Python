@@ -31,3 +31,30 @@ class Queue:
 
         if (self.front == None):
             self.rear = None
+
+
+class queue:
+
+    def __init__(self):
+        self.front = self.rear = None
+
+    def enqueue(self,data):
+
+        node = Node(data)
+
+        if self.rear is None:
+            self.rear.next = node
+
+            return
+        self.front = node
+        self.rear = node
+
+    def deque(self):
+
+        if self.front is None:
+            return None
+        else:
+            popped = self.front
+            self.front = self.front.next
+
+            return popped.data

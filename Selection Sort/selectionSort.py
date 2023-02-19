@@ -1,11 +1,12 @@
 def selectionSort(arr):
 
     for i in range(len(arr)):
-        current =arr[i]
-        for j in range(i+1,len(arr)):
-            if arr[j]<current:
-                arr[j],arr[i] = arr[i],arr[j]
-
+        min = i
+        for j in range(min+1,len(arr)):
+            if arr[j]<arr[min]:
+                min = j
+        if i != min:
+            arr[i],arr[min]=arr[min],arr[i]
 
 
 def selection_sort(arr):
@@ -29,5 +30,5 @@ if __name__ == '__main__':
         [5]
     ]
     for elements in tests:
-        selection_sort(elements)
+        selectionSort(elements)
         print(elements)

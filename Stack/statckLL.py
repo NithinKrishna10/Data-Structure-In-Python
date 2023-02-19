@@ -17,7 +17,6 @@ class Stack:
             return False
 
     def push(self, data):
-
         if self.head == None:
             self.head = Node(data)
 
@@ -27,7 +26,6 @@ class Stack:
             self.head = newnode
 
     def pop(self):
-
         if self.isempty():
             return None
 
@@ -36,6 +34,8 @@ class Stack:
             self.head = self.head.next
             poppednode.next = None
             return poppednode.data
+
+
     def peek(self):
 
         if self.isempty():
@@ -59,3 +59,17 @@ class Stack:
                 if (iternode != None):
                     print(" -> ", end="")
             return
+
+
+if __name__ == "__main__":
+    MyStack = Stack()
+
+    MyStack.push(11)
+    MyStack.push(22)
+    MyStack.push(33)
+    MyStack.push(44)
+    MyStack.display()
+    print("\n",MyStack.pop())
+    print(MyStack.peek())
+
+
