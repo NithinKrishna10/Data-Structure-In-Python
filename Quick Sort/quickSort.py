@@ -13,10 +13,12 @@ def pivot_place(list1, first, last):
         else:
             list1[left], list1[right] = list1[right], list1[left]
     list1[first], list1[right] = list1[right], list1[first]
+    print(right)
     return right
 
 
 def quicksort(list1, first, last):
+    print("first",first,"last",last)
     if first<last:
         p = pivot_place(list1, first, last)
         quicksort(list1, first, p - 1)
@@ -24,6 +26,7 @@ def quicksort(list1, first, last):
 
 
 # main
+
 
 if __name__ == '__main__':
     list1=[56,26,93,17,31,44]
