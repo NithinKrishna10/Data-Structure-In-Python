@@ -148,16 +148,12 @@ def merge(arr):
 
 
 def meger(arr):
-
     if len(arr)>1:
-
         mid = len(arr)//2
         f = arr[:mid]
         l = arr[mid:]
-
         meger(f)
         meger(l)
-
         i=j=k=0
         while i < len(f) and j <len(l):
             if f[i]<l[j]:

@@ -29,11 +29,12 @@ def bubble_sort(array):
 
 
 def bubble(arr):
-    size = len(arr)-1
+    size = len(arr) - 1
     for i in range(size):
-        for j in range(size-i):
-            if arr[j]>arr[j+1]:
-                arr[j],arr[j+1] = arr[j+1],arr[j]
+        for j in range(size - i):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
 
 if __name__ == '__main__':
     # elements = [

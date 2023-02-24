@@ -35,7 +35,6 @@ class Stack:
             poppednode.next = None
             return poppednode.data
 
-
     def peek(self):
 
         if self.isempty():
@@ -69,7 +68,5 @@ if __name__ == "__main__":
     MyStack.push(33)
     MyStack.push(44)
     MyStack.display()
-    print("\n",MyStack.pop())
+    print("\n", MyStack.pop())
     print(MyStack.peek())
-
-
