@@ -1,19 +1,13 @@
-class TreeNode:
 
+
+
+class Tree:
     def __init__(self, data):
-        self.data = data
         self.children = []
-        self.parent = None
+        self.data = data
 
-    def add_child(self, child):
-        child.parent = self
-        self.children.append(child)
-
-
-def build_product_tree():
-    root = TreeNode("Electronict")
-    laptop = TreeNode("Laptop")
-
-    laptop.add_child(TreeNode("Mac"))
-    laptop.add_child(TreeNode("HP"))
-    # print(laptop.children)
+left = Tree("left")
+middle = Tree("middle")
+right = Tree("right")
+root = Tree("root")
+root.children = [left, middle, right]
