@@ -42,6 +42,13 @@ def heapsort(arr, size):
         heapify(arr, i, 0)
 
 
+def heapsorts(arr,size):
+    for i in range((size // 2)-1,-1,-1):
+        heapify(arr,size,i)
+    for i in range(size-1,-1,-1):
+        arr[0],arr[i]= arr[i],arr[0]
+        heapify(arr,i,0)
+
 arr = []
 insert(arr, 1)
 insert(arr, 3)
@@ -53,6 +60,6 @@ insert(arr, 43)
 insert(arr, 25)
 print("Max Heap      :", str(arr))
 delete(arr, 12)
-
-heapsort(arr, len(arr))
+# arr.sort()
+heapsorts(arr, len(arr))
 print("\nAfter deletion:", str(arr))

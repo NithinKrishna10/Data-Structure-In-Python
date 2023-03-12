@@ -27,6 +27,20 @@ def DFS(node,visited,graph):
             DFS(i,visited,graph)
 
 
+
+
+
+def Dfs(node,visited,graph):
+    if node not in graph:
+        print("node is not present")
+        return
+    if node not in visited:
+        print(node,end=" ")
+        visited.add(node)
+        for i in graph:
+            Dfs(i,visited,graph)
+
+
 # DFS Iterative
 
 def DFSiterative(node,graph):
@@ -61,19 +75,30 @@ def BFSiterative(node, graph):
 
 
 
+
+
+
 visited = set()
 graph = {}
 
-add_node(43)
-add_node(32)
-add_node(56)
-add_node(34)
-add_edge(43, 32)
-add_edge(56, 43)
-add_edge(34, 32)
-add_edge(56, 34)
-DFS(43,visited,graph)
+add_node("A")
+add_node("B")
+add_node("C")
+add_node("D")
+add_node("E")
+add_node("F")
+add_edge("A", "D")
+add_edge("A", "C")
+add_edge("A", "B")
+add_edge("B", "E")
+add_edge("E", "F")
+
+# add_edge(56, 43)
+# add_edge(34, 32)
+# add_edge(56, 34)
+# DFS(43,visited,graph)
+Dfs(32,visited,graph)
 print()
-BFSiterative(43,graph)
+# BFSiterative(43,graph)
 print()
-# print(graph)
+print(graph)

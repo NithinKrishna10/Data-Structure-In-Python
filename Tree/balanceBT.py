@@ -17,7 +17,6 @@ def isHeightBalanced(root, height):
 
     left_height = Height()
     right_height = Height()
-
     if root is None:
         return True
 

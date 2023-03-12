@@ -44,7 +44,8 @@ class BST:
             else:
                 print("Node is not present in tree")
                 return
-    def ins(self,s):
+
+    def ins(self, s):
 
         if self.key == s:
             return
@@ -57,6 +58,7 @@ class BST:
             if self.rchild:
                 self.rchild.ins(s)
             self.rchild = BST(s)
+
     # Pre-Order Traversal In Binary Search Tree
     def preorder(self):
         if self.key is None:
@@ -135,30 +137,68 @@ class BST:
         print("\nmin node :", current.key)
 
 
+    def findClosestValueInBst(self, target):
+        closest = float('inf')
+        currentNode = self
+
+        while currentNode:
+
+            if abs(target-closest) > abs(target-currentNode.key):
+                closest = currentNode.key
+
+            if target < currentNode.key:
+                currentNode = currentNode.lchild
+
+            if target > currentNode.key:
+                currentNode = currentNode.rchild
+        return closest
+
 def count(node):
     if node is None:
         return 0
     return 1 + count(node.lchild) + count(node.rchild)
 
 
+class Solution(object):
+    def isValidBST(self, root):
+        return self.solve(root, -1000000000000000000000, 1000000000000000000000)
+
+    def solve(self, root, min_val, max_val):
+        if root == None or root.key == 0:
+            return True
+        if (root.key <= min_val or root.key >= max_val):
+            return False
+        return self.solve(root.lchild, min_val, root.key) and self.solve(root.rchild, root.key, max_val)
+
+
 root = BST(10)
 
-list3 = [6, 3, 1, 98, 3, 7]
+list3 = [6, 3, 1, 98, 33, 7, 56]
 for i in list3:
     root.insert(i)
-# root.delete(98)
+root.inorder()
+solv = Solution()
+print()
+print(root.findClosestValueInBst(3))
+# print(solv.isValidBST(root))
 
-
-root.preorder()
+# root.preorder()
+# c= count(root)
+#
 if count(root) > 1:
-    root.delete(10, root.key)
+    root.delete(6, root.key)
 else:
     print("can't perform deletion opearation!")
-
-root.min()
-root.max()
-print("post")
-root.postorder()
-print("In-Order")
+#
+# root.min()
+# root.max()
+# print("post")
+# root.postorder()
+# print("In-Order")
 root.inorder()
+# print(root.closest_value(5))
 # print(root.search(75))
+
+
+
+

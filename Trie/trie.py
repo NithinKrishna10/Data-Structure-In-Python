@@ -1,41 +1,129 @@
-class TrieNode:
-    def __init__(self, letter):
-        self.letter = letter
+class Trienode:
+    def __init__(self):
         self.children = {}
-        self.is_end_of_word = False
+        self.endofword = False
 
 
 class Trie:
     def __init__(self):
-        self.root = TrieNode("*")
+        self.root = Trienode()
 
-    def add_word(self, word):
-        curr_node = self.root
-        for letter in word:
-            if letter not in curr_node.children:
-                curr_node.children[letter] = TrieNode(letter)
-            curr_node = curr_node.children[letter]
-        curr_node.is_end_of_word = True
+    def insert(self, word):
+        curr = self.root
+        for c in word:
+            if c not in curr.children:
+                curr.children[c] = Trienode()
+            curr = curr.children[c]
+        curr.endofword = True
 
-    def does_word_exist(self, word):
-        if word == "":
-            return True
-        curr_node = self.root
-        for letter in word:
-            if letter not in curr_node.children:
+    def ins(self, word):
+        curr = self.root
+        for c in word:
+            if c not in curr.children:
+                curr.children[c] = Trienode()
+            curr = curr.children[c]
+        curr.endofword = True
+
+    def search(self, word):
+        curr = self.root
+        for c in word:
+            if c not in curr.children:
                 return False
-            curr_node = curr_node.children[letter]
-        return curr_node.is_end_of_word
+            curr = curr.children[c]
+        return curr.endofword
+
+    def startwith(self, prefix):
+        curr = self.root
+        for c in prefix:
+            if c not in curr.children:
+                return False
+            curr = curr.children[c]
+        return True
+
+    def sear(self, word):
+        curr = self.root
+        for c in word:
+            if c not in curr.children:
+                return False
+            curr = curr.children[c]
+        return curr.endofword
+
+    def printt(self):
+        print(self.root.children)
+
+    def insr(self, word ):
+        curr = self.root
+        for c in word:
+            if c not in curr.children:
+                curr.children[c] = Trienode()
+            curr = curr.children[c]
+        curr.endofword = True
 
 
 trie = Trie()
-words = ["wait", "waiter", "shop", "shopper"]
+words = ["wait", "waiter", "shop", "shopper", "nithin","nike","neymar","nani"]
 for word in words:
-    trie.add_word(word)
+    trie.insr(word)
+c = "wait"
+result = trie.search(c)
+print("Search result is:", result)
+trie.startwith("a")
 
-print(trie.root.children)
-print(trie.does_word_exist("wait"))  # True
-print(trie.does_word_exist(""))  # True
-print(trie.does_word_exist("waite"))  # False
-print(trie.does_word_exist("shop"))  # True
-print(trie.does_word_exist("shoppp"))  # False
+
+def dfs(node, prefix, suggestions):
+    print("dfjksj", node.endofword, "hdf", prefix)
+    if node.endofword:
+        print(prefix)
+        suggestions.append(prefix)
+
+    for char, child_node in node.children.items():
+        print(child_node, char)
+        dfs(child_node, prefix + char, suggestions)
+
+
+def suggest(trie, prefix):
+    node = trie.root
+    for char in prefix:
+        if char not in node.children:
+            return []
+        node = node.children[char]
+    suggestions = []
+    dfs(node, prefix, suggestions)
+    return suggestions
+
+
+def dfss(trie, prefix, suggestion):
+    if trie.endofword:
+        suggestion.append(prefix)
+    for char, addres in trie.children.items():
+        dfss(addres, prefix + char, suggestion)
+
+
+def suggests(trie, prefix):
+    curr = trie.root
+    for c in prefix:
+        if c not in curr.children:
+            return []
+        curr = curr.children[c]
+    suggestion = []
+    dfss(curr, prefix, suggestion)
+    return suggestion
+
+
+def inser(trie,word):
+    curr = trie
+    for c in word:
+        if c not in curr:
+            curr.children[c] = Trienode()
+        curr = curr.children[c]
+    curr.endofword = True
+
+print()
+# print(suggest(trie, "s"))s
+print(suggests(trie, "w"))
+# print()
+# trie.printt()
+# # print()
+# print(trie.sear("wait"))
+# print()
+# print(trie.search("wait"))
